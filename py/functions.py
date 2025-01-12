@@ -1,9 +1,7 @@
 import requests
 import pandas as pd
 from google.colab import files
-import tkinter as tk
-from tkinter import filedialog
-
+from tkinter import Tk, filedialog
 
 # Function to download and load the CSV file
 def download_and_load_csv(url, filename):
@@ -13,7 +11,6 @@ def download_and_load_csv(url, filename):
     Parameters:
     url (str): The URL of the CSV file.
     filename (str): The name to save the file as.
-    
     Returns:
     pd.DataFrame: The loaded DataFrame.
     """
@@ -34,14 +31,17 @@ def upload_csv_google_colab():
         break
 
 def upload_csv_not_google_colab():
-    # Create a Tkinter root window but don't display it
-    root = tk.Tk()
+    # Hide the root window
+    root = Tk()
     root.withdraw()
-    
-    # Open file dialog for selecting a CSV file
-    file_path = filedialog.askopenfilename(title="Select a CSV file", filetypes=[("CSV files", "*.csv")])
-    
-    # If the user selected a file
+    root.title("Select a CSV file")
+
+    # Open a file dialog to select a CSV file
+    file_path = filedialog.askopenfilename(
+        title="Select a CSV file",
+        filetypes=[("CSV files", "*.csv")]
+    )
+
     if file_path:
         # Read the CSV file into a pandas DataFrame
         df = pd.read_csv(file_path)
@@ -49,4 +49,4 @@ def upload_csv_not_google_colab():
         print(df.head())
         print(f"Filename: {file_path}")
     else:
-        print("No file selected.")
+        print("No file selected!")
