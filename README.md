@@ -12,21 +12,21 @@ If you do not have a Kaggle API and wish to run this on your local complier it w
 
 To run this code you will need python 3.11.9 and these libraries:
 
-OS
-zipfile: Built-in
-importlib.util: Built-in 
-tkinter: Built-in 
-JSON: Built-in 
-google.colab: Built-in 
-Pandas
-Matplotlib
-Seaborn
-Scikit-learn
-TensorFlow
-Imbalanced-learn
-Requests
-Kaggle
-Kagglehub
+1) OS
+2) zipfile: Built-in
+3) importlib.util: Built-in 
+4) tkinter: Built-in 
+5) JSON: Built-in 
+6) google.colab: Built-in 
+7) Pandas
+8) Matplotlib
+9) Seaborn
+10) Scikit-learn
+11) TensorFlow
+12) Imbalanced-learn
+13) Requests
+14) Kaggle
+15) Kagglehub
 
 You can install them using this on your python notebook:
 pip install pandas scikit-learn tensorflow matplotlib seaborn imbalanced-learn requests kaggle kagglehub
