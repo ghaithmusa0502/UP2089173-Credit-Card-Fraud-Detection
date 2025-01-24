@@ -35,7 +35,6 @@ def ensure_kaggle_json_Local():
     kaggle_json_path = os.path.expanduser("~/.kaggle/kaggle.json")
 
     if os.path.exists(kaggle_json_path):
-        print(f"Kaggle credentials found at {kaggle_json_path}.")
         return kaggle_json_path
 
     root = tk.Tk()
@@ -62,11 +61,9 @@ def ensure_kaggle_json_Local():
 
             # Move the selected file to the .kaggle directory
             shutil.move(kaggle_json_path, os.path.join(kaggle_dir, "kaggle.json"))
-            print(f"Moved kaggle.json to {os.path.join(kaggle_dir, 'kaggle.json')}")
 
             # Set the environment variable
             os.environ['KAGGLE_CONFIG_DIR'] = kaggle_dir
-            print(f"Set environment variable KAGGLE_CONFIG_DIR to {kaggle_dir}")
         else:
             print("No file selected. Authentication cannot proceed.")
             return None
@@ -124,10 +121,15 @@ def Download_and_Extract_Kaggle_Dataset_Local():
 
 def preprocess_data(data, target_column):
     try:
+        # Separates the dataset into two columns sides, the class on y and the rest on X 
         X = data.drop(target_column, axis=1)
         y = data[target_column]
+
+        # Standardize the features to have zero mean and unit variance.
         scaler = StandardScaler()
         X_scaled = scaler.fit_transform(X)
+
+        #returns the data
         return X_scaled, y
     except Exception as e:
         print(f"Error during preprocessing: {e}")
